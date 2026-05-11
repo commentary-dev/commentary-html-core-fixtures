@@ -1,12 +1,38 @@
 <!doctype html>
 <html>
   <head>
-    <title>HTML Core Baseline</title>
+    <title>HTML Core Fixture</title>
+    <style>
+      .hero { border: 1px solid #8c2d19; padding: 12px; color: #4a1f12; }
+      .callout { border-left: 4px solid #1f6feb; padding-left: 12px; }
+    </style>
   </head>
   <body>
     <main>
-      <h1>HTML Core Baseline</h1>
-      <p>This baseline keeps the fixture PR focused on added static HTML review files.</p>
+      <article id="release-notes">
+        <h1>HTML Core Fixture</h1>
+        <p class="hero">Static HTML preview should preserve safe inline CSS.</p>
+        <section aria-label="Primary checklist">
+          <h2>Primary checklist</h2>
+          <ul>
+            <li>Headings create outline anchors.</li>
+            <li>Paragraphs and list items are commentable.</li>
+            <li><a href="./table.html">Local HTML links remain inspectable.</a></li>
+            <li><a href="./unstyled.html">Unstyled HTML receives Commentary defaults.</a></li>
+            <li><a href="./styled.html">Same-repository CSS remains available.</a></li>
+            <li><a href="./title-tooltip.html">Head titles appear in navigator tooltips.</a></li>
+          </ul>
+        </section>
+        <section class="callout" role="note">
+          <h2>Safe inline SVG</h2>
+          <svg viewBox="0 0 24 24" role="img" aria-label="Green status dot">
+            <title>Green status dot</title>
+            <circle cx="12" cy="12" r="10" fill="#1f883d"></circle>
+          </svg>
+          <p>Repository images should render without overflowing the document pane.</p>
+          <img src="./assets/status.svg" alt="Status asset">
+        </section>
+      </article>
     </main>
   </body>
 </html>
