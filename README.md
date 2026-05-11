@@ -1,12 +1,18 @@
-# Commentary HTML Core Fixtures
+# Commentary HTML Core Fixture Branch
 
-Baseline branch for public HTML core fixtures.
+This branch exercises safe static HTML rendering, `.html` and `.htm` extension detection, useful inline CSS, safe inline SVG, tables, lists, links, and repository image references.
 
-This repository is safe for manual testing, demos, and read-only automation under `commentary-dev`. It is not for comment creation or mutating refresh/provider-sync tests.
+Expected Commentary behavior:
 
-The fixture branch covers static rendered HTML review, `.html` and `.htm` extension detection, semantic blocks, headings, paragraphs, lists, links, tables, inline CSS, safe inline SVG, and repository-relative assets without requiring Commentary-specific IDs or attributes.
+- `.html` files open in the rendered review workspace.
+- Preview mode renders the static HTML in a sandboxed/restricted surface.
+- Raw mode shows the original source.
+- Comments can attach to rendered headings, sections, paragraphs, lists, tables, and table rows.
+- No special Commentary IDs, custom tags, or `data-commentary-*` attributes are required.
 
-After publishing, use:
+Commentary URLs after publishing:
 
 - PR review: `/review/github/commentary-dev/commentary-html-core-fixtures/pull/1?file=public%2Findex.html`
 - Direct document: `/review/github/commentary-dev/commentary-html-core-fixtures/document?branch=fixture%2Fcore-html&file=public%2Findex.html`
+- Table page: `/review/github/commentary-dev/commentary-html-core-fixtures/document?branch=fixture%2Fcore-html&file=public%2Ftable.html`
+- HTM page: `/review/github/commentary-dev/commentary-html-core-fixtures/document?branch=fixture%2Fcore-html&file=public%2Flegacy.htm`

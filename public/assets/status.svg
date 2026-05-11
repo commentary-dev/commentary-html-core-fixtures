@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" role="img" aria-label="Ready status">
+  <rect width="120" height="40" rx="4" fill="#f0fff4"/>
+  <circle cx="22" cy="20" r="8" fill="#1f883d"/>
+  <text x="40" y="25" font-family="Arial, sans-serif" font-size="16" fill="#116329">Ready</text>
+</svg>
