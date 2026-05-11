@@ -1,0 +1,9 @@
+.external-style-check {
+  border: 2px solid #116329;
+  padding: 12px;
+  color: #116329;
+}
+
+.external-style-check strong {
+  color: #0550ae;
+}
