@@ -1,0 +1,193 @@
+schemas:
+  - contentHash: sha256:1020761d72e14e364bb4aa9769d5e01750048dd52eff4dfaa9b67be3ce883dee
+    contract:
+      acceptance:
+        mode: optional
+      contractVersion: 1
+      fields:
+        - id: title
+          label: Work
+          required: true
+          schema:
+            minLength: 1
+          type: text
+        - default: false
+          id: completed
+          label: Execution complete
+          type: boolean
+        - default: open
+          id: state
+          label: Execution status
+          options:
+            - id: open
+              label: Open
+            - id: done
+              label: Done
+          type: status
+        - id: description
+          label: Description
+          type: markdown
+        - id: effort
+          label: Effort
+          schema:
+            minimum: 0
+          type: number
+        - id: due
+          label: Due date
+          type: date
+        - id: scheduled
+          label: Scheduled
+          type: datetime
+        - id: priority
+          label: Priority
+          options:
+            - id: low
+              label: Low
+            - id: high
+              label: High
+          type: priority
+        - id: category
+          label: Category
+          options:
+            - id: docs
+              label: Documentation
+            - id: code
+              label: Code
+          type: enum
+        - id: tags
+          label: Tags
+          options:
+            - id: ready
+              label: Ready
+            - id: review
+              label: Review
+          type: multiselect
+        - id: url
+          label: URL
+          type: url
+        - id: metadata
+          label: Metadata
+          type: metadata
+        - id: owner
+          label: Owner
+          type: actor_ref
+        - id: owners
+          label: Owners
+          type: actor_refs
+        - id: artifact
+          label: Artifact
+          type: artifact_ref
+        - id: artifacts
+          label: Artifacts
+          type: artifact_refs
+        - id: resource
+          label: Resource
+          type: resource_ref
+        - id: resources
+          label: Resources
+          type: resource_refs
+        - id: related
+          label: Related record
+          type: record_ref
+        - id: relatedMany
+          label: Related records
+          type: record_refs
+        - id: start
+          label: Start date
+          type: date
+        - id: end
+          label: End date
+          type: date
+      kind: commentary_tracker
+      name: Disposable Ralph automated acceptance 20261012 Git authority controls
+      views:
+        - key: checklist
+          mappings:
+            completed: completed
+            title: title
+          name: Checklist
+          renderer: checklist
+          visibleFields:
+            - state
+            - effort
+        - key: list
+          mappings:
+            title: title
+          name: List
+          renderer: list
+          visibleFields:
+            - state
+            - effort
+        - key: table
+          mappings:
+            display: title
+            title: title
+          name: Table
+          renderer: table
+          visibleFields:
+            - title
+            - completed
+            - state
+            - effort
+            - due
+        - key: board
+          mappings:
+            group: state
+            title: title
+          name: Board
+          renderer: board
+          visibleFields:
+            - state
+            - effort
+        - key: timeline
+          layout:
+            from: 2026-10-01
+            granularity: month
+            timezone: America/New_York
+            to: 2026-10-31
+          mappings:
+            end: end
+            group: category
+            start: start
+            title: title
+          name: Roadmap
+          renderer: timeline
+        - key: calendar
+          layout:
+            from: 2026-10-01
+            granularity: month
+            timezone: America/New_York
+            to: 2026-10-31
+          mappings:
+            date: due
+            title: title
+          name: Milestones
+          renderer: calendar
+        - key: gantt
+          layout:
+            from: 2026-10-01
+            granularity: month
+            timezone: America/New_York
+            to: 2026-10-31
+          mappings:
+            dependencies: relatedMany
+            end: end
+            start: start
+            title: title
+          name: Dependencies
+          renderer: gantt
+        - key: summary
+          layout:
+            from: 2026-10-01
+            granularity: month
+            mode: all
+            timezone: America/New_York
+            to: 2026-10-31
+          mappings:
+            acceptance: $acceptance
+            end: end
+            execution: state
+            start: start
+          name: Execution summary
+          renderer: summary
+    id: 37ecd80c-bff6-44af-8e65-a56e99b0e3d0
