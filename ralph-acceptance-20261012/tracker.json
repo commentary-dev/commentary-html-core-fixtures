@@ -1,0 +1,1404 @@
+{
+  "kind": "commentary_tracker_export",
+  "formatVersion": 1,
+  "tracker": {
+    "id": "f6c40549-2fbb-4a77-b249-ef8baccfd815",
+    "version": 66,
+    "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+    "orderVersion": 66,
+    "lifecycle": "active"
+  },
+  "schemas": [
+    {
+      "id": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "contentHash": "sha256:5a4255f9fd4db2afdc7beedf4b3313b2737194847c9fc4f45cf1342c2e8b8794",
+      "contract": {
+        "kind": "commentary_tracker",
+        "name": "Disposable Ralph automated acceptance 20261012 standalone work",
+        "views": [
+          {
+            "key": "checklist",
+            "name": "Checklist",
+            "mappings": {
+              "title": "title",
+              "completed": "completed"
+            },
+            "renderer": "checklist",
+            "visibleFields": [
+              "state",
+              "effort"
+            ]
+          },
+          {
+            "key": "list",
+            "name": "List",
+            "mappings": {
+              "title": "title"
+            },
+            "renderer": "list",
+            "visibleFields": [
+              "state",
+              "effort"
+            ]
+          },
+          {
+            "key": "table",
+            "name": "Table",
+            "mappings": {
+              "title": "title",
+              "display": "title"
+            },
+            "renderer": "table",
+            "visibleFields": [
+              "title",
+              "completed",
+              "state",
+              "effort",
+              "due"
+            ]
+          },
+          {
+            "key": "board",
+            "name": "Board",
+            "mappings": {
+              "group": "state",
+              "title": "title"
+            },
+            "renderer": "board",
+            "visibleFields": [
+              "state",
+              "effort"
+            ]
+          },
+          {
+            "key": "timeline",
+            "name": "Roadmap",
+            "layout": {
+              "to": "2026-10-31",
+              "from": "2026-10-01",
+              "timezone": "America/New_York",
+              "granularity": "month"
+            },
+            "mappings": {
+              "end": "end",
+              "group": "category",
+              "start": "start",
+              "title": "title"
+            },
+            "renderer": "timeline"
+          },
+          {
+            "key": "calendar",
+            "name": "Milestones",
+            "layout": {
+              "to": "2026-10-31",
+              "from": "2026-10-01",
+              "timezone": "America/New_York",
+              "granularity": "month"
+            },
+            "mappings": {
+              "date": "due",
+              "title": "title"
+            },
+            "renderer": "calendar"
+          },
+          {
+            "key": "gantt",
+            "name": "Dependencies",
+            "layout": {
+              "to": "2026-10-31",
+              "from": "2026-10-01",
+              "timezone": "America/New_York",
+              "granularity": "month"
+            },
+            "mappings": {
+              "end": "end",
+              "start": "start",
+              "title": "title",
+              "dependencies": "relatedMany"
+            },
+            "renderer": "gantt"
+          },
+          {
+            "key": "summary",
+            "name": "Execution summary",
+            "layout": {
+              "to": "2026-10-31",
+              "from": "2026-10-01",
+              "mode": "all",
+              "timezone": "America/New_York",
+              "granularity": "month"
+            },
+            "mappings": {
+              "end": "end",
+              "start": "start",
+              "execution": "state",
+              "acceptance": "$acceptance"
+            },
+            "renderer": "summary"
+          }
+        ],
+        "fields": [
+          {
+            "id": "title",
+            "type": "text",
+            "label": "Work",
+            "schema": {
+              "minLength": 1
+            },
+            "required": true
+          },
+          {
+            "id": "completed",
+            "type": "boolean",
+            "label": "Execution complete",
+            "default": false
+          },
+          {
+            "id": "state",
+            "type": "status",
+            "label": "Execution status",
+            "default": "open",
+            "options": [
+              {
+                "id": "open",
+                "label": "Open"
+              },
+              {
+                "id": "done",
+                "label": "Done"
+              }
+            ]
+          },
+          {
+            "id": "description",
+            "type": "markdown",
+            "label": "Description"
+          },
+          {
+            "id": "effort",
+            "type": "number",
+            "label": "Effort",
+            "schema": {
+              "minimum": 0
+            }
+          },
+          {
+            "id": "due",
+            "type": "date",
+            "label": "Due date"
+          },
+          {
+            "id": "scheduled",
+            "type": "datetime",
+            "label": "Scheduled"
+          },
+          {
+            "id": "priority",
+            "type": "priority",
+            "label": "Priority",
+            "options": [
+              {
+                "id": "low",
+                "label": "Low"
+              },
+              {
+                "id": "high",
+                "label": "High"
+              }
+            ]
+          },
+          {
+            "id": "category",
+            "type": "enum",
+            "label": "Category",
+            "options": [
+              {
+                "id": "docs",
+                "label": "Documentation"
+              },
+              {
+                "id": "code",
+                "label": "Code"
+              }
+            ]
+          },
+          {
+            "id": "tags",
+            "type": "multiselect",
+            "label": "Tags",
+            "options": [
+              {
+                "id": "ready",
+                "label": "Ready"
+              },
+              {
+                "id": "review",
+                "label": "Review"
+              }
+            ]
+          },
+          {
+            "id": "url",
+            "type": "url",
+            "label": "URL"
+          },
+          {
+            "id": "metadata",
+            "type": "metadata",
+            "label": "Metadata"
+          },
+          {
+            "id": "owner",
+            "type": "actor_ref",
+            "label": "Owner"
+          },
+          {
+            "id": "owners",
+            "type": "actor_refs",
+            "label": "Owners"
+          },
+          {
+            "id": "artifact",
+            "type": "artifact_ref",
+            "label": "Artifact"
+          },
+          {
+            "id": "artifacts",
+            "type": "artifact_refs",
+            "label": "Artifacts"
+          },
+          {
+            "id": "resource",
+            "type": "resource_ref",
+            "label": "Resource"
+          },
+          {
+            "id": "resources",
+            "type": "resource_refs",
+            "label": "Resources"
+          },
+          {
+            "id": "related",
+            "type": "record_ref",
+            "label": "Related record"
+          },
+          {
+            "id": "relatedMany",
+            "type": "record_refs",
+            "label": "Related records"
+          },
+          {
+            "id": "start",
+            "type": "date",
+            "label": "Start date"
+          },
+          {
+            "id": "end",
+            "type": "date",
+            "label": "End date"
+          }
+        ],
+        "acceptance": {
+          "mode": "optional"
+        },
+        "contractVersion": 1
+      }
+    }
+  ],
+  "records": [
+    {
+      "id": "170ca0c5-1b60-4077-a81d-4e444d3c0d2f",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000001048576",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "state": "open",
+        "title": "Controlled work 001",
+        "effort": 0,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "0d569811-c6c1-459f-b0aa-724369686aa9",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000002097152",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 002",
+        "effort": 1,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "ad3dcb1f-620f-499b-aeef-756c641cd153",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000003145728",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 003",
+        "effort": 2,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "b23a1ec5-0a0e-413c-a27d-ebf2649f1bc7",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000004194304",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 004",
+        "effort": 3,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "e02fc652-7974-4886-a7a9-fc12b5fd8122",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000005242880",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 005",
+        "effort": 4,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "c39fbfa8-a200-495e-aca1-337f35e90937",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000006291456",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 006",
+        "effort": 0,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "ed7b8a0e-4d60-4d7a-9eeb-e58b61f5fd11",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000007340032",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 007",
+        "effort": 1,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "f68046ed-ec64-4c83-a47a-f3326272c846",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000008388608",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 008",
+        "effort": 2,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "354083b7-1571-4418-b31f-37a98cc55d50",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000009437184",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 009",
+        "effort": 3,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "b6eef91f-f95d-4ce2-a4c6-000e4c7b69df",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000010485760",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 010",
+        "effort": 4,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "eede532f-b8f3-4f07-b374-543d1886dcb8",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000011534336",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "state": "open",
+        "title": "Controlled work 011",
+        "effort": 0,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "9e971a8b-1342-42cc-954e-7f23c942d4e2",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000012582912",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 012",
+        "effort": 1,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "038dd99a-f42d-4fda-81e1-85228644c585",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000013631488",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 013",
+        "effort": 2,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "4a46587e-8784-4a7a-be2d-035ce63bc264",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000014680064",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 014",
+        "effort": 3,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "ac8ee2d0-5d53-43c5-aa95-7c08cd699cff",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000015728640",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 015",
+        "effort": 4,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "792d192b-3e98-4139-993c-72e5885c014a",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000016777216",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 016",
+        "effort": 0,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "4ed6c84d-abfe-437f-87c9-c2c2d334f786",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000017825792",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 017",
+        "effort": 1,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "7d671aac-4316-44f5-b9ad-4e26c5a355b7",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000018874368",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 018",
+        "effort": 2,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "b76afe6c-daac-422d-b73e-3803e62dbc81",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000019922944",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 019",
+        "effort": 3,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "3c20d6c4-66c4-425a-bcde-7fc1aee58fd3",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000020971520",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 020",
+        "effort": 4,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "03095dff-f7cd-48c0-86f7-fa8466e967d4",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000022020096",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "state": "open",
+        "title": "Controlled work 021",
+        "effort": 0,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "a0a56d5d-fbbb-4301-af8b-19b5a8bfbfc6",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000023068672",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 022",
+        "effort": 1,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "87c0a519-5798-4d5f-898e-cdfea98284dc",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000024117248",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 023",
+        "effort": 2,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "a27af913-926a-4a92-add4-0369a569e9ce",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000025165824",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 024",
+        "effort": 3,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "c71f14f4-dc57-4030-bb69-c4114e26f7a8",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000026214400",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 025",
+        "effort": 4,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "89b228c6-57b4-4a53-a9d9-ad8b7824a230",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000027262976",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 026",
+        "effort": 0,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "06fe479c-6ab7-4ebc-8997-23b8459ab687",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000028311552",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 027",
+        "effort": 1,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "e70de4eb-b166-49ba-a2d2-854d5006a1f3",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000029360128",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 028",
+        "effort": 2,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "3c16bc33-35b4-479e-88f0-08ed35fc8489",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000030408704",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 029",
+        "effort": 3,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "8a33bb3c-e03c-40e5-82c0-e88d224c00a0",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000031457280",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 030",
+        "effort": 4,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "34a05076-bc90-4fe6-9e51-627fe8d8f241",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000032505856",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "state": "open",
+        "title": "Controlled work 031",
+        "effort": 0,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "d4eebc15-4f10-487e-b1e3-9a7b2f45cdf6",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000033554432",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 032",
+        "effort": 1,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "c8f79002-4738-4c51-abd1-01f1db02a921",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000034603008",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 033",
+        "effort": 2,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "9d5ce5cc-906f-43d9-8039-bc839326e0d7",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000035651584",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 034",
+        "effort": 3,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "d573fbb0-c010-4edc-aee3-268263d715df",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000036700160",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 035",
+        "effort": 4,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "d1609f70-6d4f-45bf-8fb9-456500fa0512",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000037748736",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 036",
+        "effort": 0,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "ad90bbac-c047-4496-bb70-fe6a7b994846",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000038797312",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 037",
+        "effort": 1,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "90171398-1a85-49ac-be9a-c8cacbf011eb",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000039845888",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 038",
+        "effort": 2,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "1dcf0016-a793-4c44-942b-b97f8e7d6231",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000040894464",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 039",
+        "effort": 3,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "3d62cd84-a7ac-40c7-9c45-98eb74795288",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000041943040",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 040",
+        "effort": 4,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "30adb3f9-95ac-495f-b079-c51c669ed6e7",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000042991616",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "state": "open",
+        "title": "Controlled work 041",
+        "effort": 0,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "2325f4a2-8c3d-40a2-a134-5b97cbf7c769",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000044040192",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 042",
+        "effort": 1,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "32981f67-d5bd-4f0f-b097-f9d7199b2a35",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000045088768",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 043",
+        "effort": 2,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "eaf819d4-1744-4760-b956-80e399811b2b",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000046137344",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 044",
+        "effort": 3,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "6034a9c2-cd21-42dd-b8bc-a57e8197a5e0",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000047185920",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 045",
+        "effort": 4,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "2c625aaa-4aea-423d-b7cd-8545c613c60f",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000048234496",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 046",
+        "effort": 0,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "5ec4304d-1944-42e9-be22-df74876cdba6",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000049283072",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 047",
+        "effort": 1,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "b06a7f34-f021-4924-90f7-e560362f6248",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000050331648",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 048",
+        "effort": 2,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "05d50be4-5a8e-442b-a3a0-fe1d26377127",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000051380224",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 049",
+        "effort": 3,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "f4346e3c-418b-4e18-ba3f-b8602825ad23",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000052428800",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 050",
+        "effort": 4,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "264b8dd0-8c00-497b-94d7-6f5ce5614dcb",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000053477376",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "state": "open",
+        "title": "Controlled work 051",
+        "effort": 0,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "04f27c20-55cc-4766-9606-af64b988fa97",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000054525952",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 052",
+        "effort": 1,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "e8081735-1b22-4294-9dbe-699316b446fe",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000055574528",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 053",
+        "effort": 2,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "cecf56b9-6c8b-4e79-9dcf-7e506b23bb0e",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000056623104",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 054",
+        "effort": 3,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "8c3d6317-3fd5-48cc-9d26-37c449c9f543",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000057671680",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 055",
+        "effort": 4,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "3e8bb99e-1ede-47af-b3b9-38e70e458f8c",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000058720256",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 056",
+        "effort": 0,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "6fdd2550-691a-4199-ad33-dc81c5baa76f",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000059768832",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 057",
+        "effort": 1,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "71f23ddf-04ab-444e-ad30-3727504c7d56",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000060817408",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 058",
+        "effort": 2,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "bd5d126f-55cc-4c3f-830b-74b3c0de4dee",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000061865984",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 059",
+        "effort": 3,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "78ec0e09-ecc2-411b-bc47-08830c3f44f0",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000062914560",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 060",
+        "effort": 4,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "890fbb26-6010-4a94-b039-6ef87f71e1f2",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000063963136",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "state": "open",
+        "title": "Controlled work 061",
+        "effort": 0,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "0b3577ad-928a-4c10-bea2-726820afaf9b",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000065011712",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 062",
+        "effort": 1,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "5e78f821-e8dd-419f-9bee-f5c5130556d7",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000066060288",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 063",
+        "effort": 2,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "fa373b3d-6843-4198-bec3-9157ef5e8954",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000067108864",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 064",
+        "effort": 3,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    },
+    {
+      "id": "131be9d7-1ed9-4ca5-8b84-d13ecb89a4d4",
+      "schemaRevisionId": "5b90f585-aa3e-40e9-9814-737839a80ca1",
+      "version": 1,
+      "orderKey": "00000000000068157440",
+      "archived": false,
+      "values": {
+        "due": "2026-10-20",
+        "end": "2026-10-20",
+        "start": "2026-10-12",
+        "state": "open",
+        "title": "Controlled work 065",
+        "effort": 4,
+        "completed": false,
+        "description": "Supplied fixture input; no acceptance claim."
+      }
+    }
+  ],
+  "views": [],
+  "history": []
+}
