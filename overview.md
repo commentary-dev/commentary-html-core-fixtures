@@ -1,3 +1,3 @@
 # Recovery overview
 
-Retry requests immediately, without checking the recorded intent.
+Retry only the recorded intent after confirming it is safe.
