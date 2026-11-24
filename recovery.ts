@@ -1,4 +1,4 @@
 export function recover() {
-  const retryLimit = 2;
+  const retryLimit = 3;
   return { retryLimit, policy: 'bounded' };
 }
